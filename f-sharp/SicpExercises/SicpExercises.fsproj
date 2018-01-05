@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Library.fsx" />
+    <None Include="1.1.fsx" />
   </ItemGroup>
 
 </Project>
