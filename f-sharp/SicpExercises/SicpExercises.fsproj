@@ -8,6 +8,7 @@
     <None Include="1.1.fsx" />
     <None Include="1.2.fsx" />
     <None Include="1.3.fsx" />
+    <None Include="chapter-1.1.4.fsx" />
   </ItemGroup>
 
 </Project>
