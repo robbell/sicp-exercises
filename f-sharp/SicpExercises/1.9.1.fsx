@@ -1,4 +1,5 @@
-// Exercise 1.9
+// Exercise 1.9 - Part 1
+// Recursive procedure, recursive process
 
 // (define (+ a b)
 //   (if (= a 0) 
@@ -29,8 +30,3 @@ let inline (+) a b =
 // 9
 
 4 + 5
-
-// (define (+ a b)
-//   (if (= a 0) 
-//       b 
-//       (+ (dec a) (inc b))))
