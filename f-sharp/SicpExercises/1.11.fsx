@@ -11,5 +11,15 @@ let rec fibIter a b count =
 
 let fibIt n = fibIter 1 0 n
 
+(fib 1 0 7)
+(fib 1 1 6)
+(fib 2 1 5)
+(fib 3 2 4)
+(fib 5 3 3)
+(fib 8 5 2)
+(fib 13 8 1)
+(fib 21 13 0)
+(13)
+
 fib 7
 fibIt 7
