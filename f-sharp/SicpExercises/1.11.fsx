@@ -1,25 +1,71 @@
 // Exercise 1.11
 
-let rec fib n = 
-    if n = 0 then 0
-    else if n = 1 then 1
-    else fib (n - 1) + fib (n - 2)
 
-let rec fibIter a b count = 
-    if count = 0 then b
-    else fibIter (a + b) a (count - 1)
 
-let fibIt n = fibIter 1 0 n
 
-(fib 1 0 7)
-(fib 1 1 6)
-(fib 2 1 5)
-(fib 3 2 4)
-(fib 5 3 3)
-(fib 8 5 2)
-(fib 13 8 1)
-(fib 21 13 0)
-(13)
 
-fib 7
-fibIt 7
+let countChange amount = 
+    let firstDenomination kindsOfCoins = 
+        match kindsOfCoins  with
+        | 1 -> 1
+        | 2 -> 5
+        | 3 -> 10
+        | 4 -> 25
+        | _ -> 50
+        
+    let rec cc amount kindsOfCoins = 
+        if amount = 0 then 1
+        else if amount < 0 || kindsOfCoins = 0 then 0
+        else cc amount (kindsOfCoins - 1) + cc (amount - (firstDenomination kindsOfCoins)) kindsOfCoins
+
+    cc amount 1
+
+countChange 2
+
+
+(cc 5 2)
+(cc 5 1 + cc (5 - 5) 2)
+(cc 5 1 + cc 0 2)
+((cc 5 0 + cc (5 - 1) 1) + 1)
+((cc 5 0 + cc 4 1) + 1)
+((0 + cc 4 1) + 1)
+((0 + (cc 4 0 + cc (4 - 1) 1)) + 1)
+((0 + (cc 4 0 + cc 3 1)) + 1)
+((0 + (0 + (cc 3 0) + cc (3 - 1) 1)) + 1)
+((0 + (0 + (cc 3 0) + cc 2 1)) + 1)
+((0 + (0 + 0 + cc 2 1)) + 1)
+((0 + (0 + 0 + cc 2 1)) + 1)
+
+
+
+20 - 1 5 10
+
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5
+1 1 1 1 1 1 1 1 1 1 5 5
+1 1 1 1 1 5 5 5
+5 5 5 5
+
+1 1 1 1 1 1 1 1 1 1 10
+10 10
+5 5 10
+1 1 1 1 1 5 10
+
+10
+
+1 1 1 1 1 1 1 1 1 1
+10
+5 5
+1 1 1 1 1 5
+
+
+cc 10 2
+
+
+// 10 with 1 5 10
+
+// 1 1 1 1 1 1 1 1 1 1
+// 1 1 1 1 1 5
+// 5 5
+
+// 10
