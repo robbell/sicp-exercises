@@ -11,7 +11,10 @@
     <None Include="1.7.fsx" />
     <None Include="1.9.1.fsx" />
     <None Include="1.9.2.fsx" />
+    <None Include="1.10.fsx" />
+    <None Include="1.11.fsx" />
     <None Include="chapter-1.1.4.fsx" />
+    <None Include="chapter-1.2.2.fsx" />
   </ItemGroup>
 
 </Project>
