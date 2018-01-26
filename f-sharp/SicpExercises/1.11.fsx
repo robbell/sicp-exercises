@@ -1,71 +1,59 @@
 // Exercise 1.11
 
+// Recursive process
 
+let rec f n =
+    if n < 3 then n
+    else f(n - 1) + (f(n - 2) * 2) + (f(n - 3) * 3)
 
+f 5
 
+// f(3)
+// (f(3-1) + f(3-2) * 2 + f(3-3) * 3)
+// (f(2) + f(1) * 2 + f(0) * 3)
+// (2 + 1 * 2 + 0 * 3)
+// (2 + 2 + 0)
+// 4
 
-let countChange amount = 
-    let firstDenomination kindsOfCoins = 
-        match kindsOfCoins  with
-        | 1 -> 1
-        | 2 -> 5
-        | 3 -> 10
-        | 4 -> 25
-        | _ -> 50
-        
-    let rec cc amount kindsOfCoins = 
-        if amount = 0 then 1
-        else if amount < 0 || kindsOfCoins = 0 then 0
-        else cc amount (kindsOfCoins - 1) + cc (amount - (firstDenomination kindsOfCoins)) kindsOfCoins
+// f(4)
+// (f(4-1) + f(4-2) * 2 + f(4-3) * 3)
+// (f(3) + f(2) * 2 + f(1) * 3)
+// ((f(3 - 1) + f(3 - 2) * 2 + f(3 - 3) * 3) + f(2) * 2 + f(1) * 3)
+// ((f(3 - 1) + f(3 - 2) * 2 + f(3 - 3) * 3) + 2 * 2 + 1 * 3)
+// ((f(3 - 1) + f(3 - 2) * 2 + f(3 - 3) * 3) + 4 + 3)
+// ((f(2) + f(1) * 2 + f(0) * 3) + 4 + 3)
+// ((2 + 2 + 0) + 4 + 3)
+// (4 + 7)
+// 11
 
-    cc amount 1
+// Iterative process
 
-countChange 2
+let rec f2Iter a b c count = 
+    if count < 3 then a
+    else f2Iter (a + (b * 2) + (c * 3)) 
+                a 
+                b 
+                (count - 1)
 
+let f2 n = 
+    if n < 3 then n
+    else f2Iter 2 1 0 n
 
-(cc 5 2)
-(cc 5 1 + cc (5 - 5) 2)
-(cc 5 1 + cc 0 2)
-((cc 5 0 + cc (5 - 1) 1) + 1)
-((cc 5 0 + cc 4 1) + 1)
-((0 + cc 4 1) + 1)
-((0 + (cc 4 0 + cc (4 - 1) 1)) + 1)
-((0 + (cc 4 0 + cc 3 1)) + 1)
-((0 + (0 + (cc 3 0) + cc (3 - 1) 1)) + 1)
-((0 + (0 + (cc 3 0) + cc 2 1)) + 1)
-((0 + (0 + 0 + cc 2 1)) + 1)
-((0 + (0 + 0 + cc 2 1)) + 1)
+f2 4
 
+// f2(3)
+// f2Iter(2 1 0 3)
+// f2Iter((2 + (1 * 2) + (0 * 3)) 2 1 (3 - 1))
+// f2Iter((2 + 2 + 0) 2 1 2)
+// f2Iter(4 2 1 2)
+// 4
 
-
-20 - 1 5 10
-
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5
-1 1 1 1 1 1 1 1 1 1 5 5
-1 1 1 1 1 5 5 5
-5 5 5 5
-
-1 1 1 1 1 1 1 1 1 1 10
-10 10
-5 5 10
-1 1 1 1 1 5 10
-
-10
-
-1 1 1 1 1 1 1 1 1 1
-10
-5 5
-1 1 1 1 1 5
-
-
-cc 10 2
-
-
-// 10 with 1 5 10
-
-// 1 1 1 1 1 1 1 1 1 1
-// 1 1 1 1 1 5
-// 5 5
-
-// 10
+// f2(4)
+// f2Iter(2 1 0 4)
+// f2Iter((2 + (1 * 2) + (0 * 3)) 2 1 (4 - 1))
+// f2Iter((2 + 2 + 0) 2 1 3)
+// f2Iter(4 2 1 3)
+// f2Iter((4 + (2 * 2) + (1 * 3)) 2 1 (3 - 1))
+// f2Iter((4 + 4 + 3) 2 1 2)
+// f2Iter(11 2 1 2)
+// 11
